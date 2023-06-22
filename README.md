@@ -12,7 +12,7 @@
 #### 5) Go to chrome and enter URL as → localhost/phpmyadmin (To access MySQL Database) or using MySQL Workbench
 #### 6) Create database and tables in MySQL Server you want (todos table used in that project)
 
-#### Changes
+#### My Changes
 ##### 1) .env file change database details,CI_ENVIRONMENT and baseURL
 ##### 2) Changes in App --> Controller (Home) / App --> Models (ToDoModels) / App --> Views (todos) 
 
