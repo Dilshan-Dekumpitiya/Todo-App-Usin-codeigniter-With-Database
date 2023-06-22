@@ -1,4 +1,4 @@
-# CodeIgniter 4 Application Starter
+# CodeIgniter 4 Application Starter of Todo App 
 
 ## To run this project need local host like XAMPP Server and MySQL server on XAMPP (Install XAMPP Server)
 ## Database - MySQL
@@ -15,6 +15,7 @@
 ### My Changes
 ##### 1) .env file change database details,CI_ENVIRONMENT and baseURL
 ##### 2) Changes in App --> Controller (Home) / App --> Models (ToDoModels) / App --> Views (todos) 
+##### 3) Use bootstrap to view
 
 ## ----------------------------------------------------------------------------------------
 
