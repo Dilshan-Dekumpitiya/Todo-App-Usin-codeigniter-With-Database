@@ -16,7 +16,7 @@
 ##### 1) .env file change database details,CI_ENVIRONMENT and baseURL
 ##### 2) Changes in App --> Controller (Home) / App --> Models (ToDoModels) / App --> Views (todos) 
 
-## --------------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------------------
 
 ## What is CodeIgniter?
 
