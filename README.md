@@ -17,7 +17,7 @@
 ##### 2) Changes in App --> Controller (Home) / App --> Models (ToDoModels) / App --> Views (todos) 
 ##### 3) Use bootstrap framework to view
 
-## ----------------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------------
 
 ## What is CodeIgniter?
 
