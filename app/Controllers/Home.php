@@ -31,4 +31,12 @@ class Home extends BaseController
         
         return redirect() -> to('home');
     }
+
+    public function delete($id){
+        $todosModel = new ToDoModel();
+        $todosModel -> delete($id);
+        session() -> setFlashdata('successMessage','Deleted Successfully');
+
+        return redirect() -> to('home');
+    } 
 }

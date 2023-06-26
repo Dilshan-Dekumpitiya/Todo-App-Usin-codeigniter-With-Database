@@ -18,6 +18,15 @@
             </div>
         </header>
         <div class="container">
+            <?php $flashMessage = session() -> getFlashdata('successMessage');
+            if(strlen($flashMessage) >0 ) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            
+            <span><?php echo $flashMessage; ?></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php } ?>
+
             <form class="row" method="POST" action="<?php echo base_url('home/store/' . @$dataEdit['id'] ); ?>">
                 <div class="col-10">
                     <input name="todoname" class="form-control mb-2" value="<?php echo @$dataEdit['todoname'] ?>" type="text" placeholder="Todo Name">
@@ -31,7 +40,7 @@
                             echo "Add Todo";
                         }
                         ?>
-                        <!-- Add To Do -->
+                        Add To Do
                     </button>
                 </div>
             </form>
@@ -48,7 +57,7 @@
                                     <h5 class="card-title"><?php echo $todo['todoname']; ?></h5>
                                     <p class="card-text"><?php echo $todo['description']; ?></p>
                                     <a href="<?php echo base_url('home/index/' . $todo['id']); ?>" class="btn btn-outline-info card-link" type="submit">Edit</a>
-                                    <a href="#" class="btn btn-outline-danger card-link">Delete</a>
+                                    <a onclick="confirm('Are you sure to delete ?') ? window.location.href='<?php echo base_url('home/delete/' . $todo['id']); ?>' : '' " href="javascript:undefined;" class="btn btn-outline-danger card-link">Delete</a>
                                 </div>
                             </div>
                         </div>
