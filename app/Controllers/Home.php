@@ -7,21 +7,28 @@ use App\Models\ToDoModel;
 class Home extends BaseController
 {
     // first call index method
-    public function index()
+    public function index($id='')
     {
+        $dataEdit =array();
         $todosModel = new ToDoModel();
         $data = $todosModel -> orderBy('id','desc')->findAll();
         $data = array_chunk($data,4);
-        return view('todos',array("data"=> $data));
+        if(is_numeric($id)){
+            $dataEdit = $todosModel -> find($id);
+        }
+        return view('todos',array("data"=> $data , 'dataEdit' => $dataEdit));
     }
 
-    public function store(){ //base url method
+    public function store($id=''){ //base url method
 
         $data = $this -> request -> getPost();
-     
         $todosModel = new ToDoModel();
-        $todosModel -> insert($data);
-
+        if(!empty($id) && is_numeric($id)){
+            $todosModel -> update($id,$data);
+        }else{
+            $todosModel -> insert($data);
+        }
+        
         return redirect() -> to('home');
     }
 }

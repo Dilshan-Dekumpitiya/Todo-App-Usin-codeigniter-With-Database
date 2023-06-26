@@ -18,13 +18,21 @@
             </div>
         </header>
         <div class="container">
-            <form class="row" method="POST" action="<?php echo base_url('home/store'); ?>">
+            <form class="row" method="POST" action="<?php echo base_url('home/store/' . @$dataEdit['id'] ); ?>">
                 <div class="col-10">
-                    <input name="todoname" class="form-control mb-2" type="text" placeholder="Todo Name">
-                    <textarea name="description" class="form-control mb-2" placeholder="Todo Description"></textarea>
+                    <input name="todoname" class="form-control mb-2" value="<?php echo @$dataEdit['todoname'] ?>" type="text" placeholder="Todo Name">
+                    <textarea name="description" class="form-control mb-2" placeholder="Todo Description"><?php echo @$dataEdit['description'] ?></textarea>
                 </div>
                 <div class="col-2">
-                    <button type="submit" class="btn btn-outline-primary">Add To Do</button>
+                    <button type="submit" class="btn btn-outline-primary">
+                        <?php if(!empty($dataEdit)){
+                            echo "Update Todo";
+                        }else{
+                            echo "Add Todo";
+                        }
+                        ?>
+                        <!-- Add To Do -->
+                    </button>
                 </div>
             </form>
 
@@ -39,7 +47,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $todo['todoname']; ?></h5>
                                     <p class="card-text"><?php echo $todo['description']; ?></p>
-                                    <a href="#" class="btn btn-outline-info card-link">Edit</a>
+                                    <a href="<?php echo base_url('home/index/' . $todo['id']); ?>" class="btn btn-outline-info card-link" type="submit">Edit</a>
                                     <a href="#" class="btn btn-outline-danger card-link">Delete</a>
                                 </div>
                             </div>
