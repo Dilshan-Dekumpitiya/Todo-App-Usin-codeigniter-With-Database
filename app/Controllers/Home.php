@@ -24,9 +24,13 @@ class Home extends BaseController
         $data = $this -> request -> getPost();
         $todosModel = new ToDoModel();
         if(!empty($id) && is_numeric($id)){
-            $todosModel -> update($id,$data);
+           $isDone= $todosModel -> update($id,$data);
         }else{
-            $todosModel -> insert($data);
+            $isDone= $todosModel -> insert($data);
+        }
+        if(!$isDone){
+            $errors = $todosModel -> errors();
+            session() -> set('errorsMessages',$errors);
         }
         
         return redirect() -> to('home');

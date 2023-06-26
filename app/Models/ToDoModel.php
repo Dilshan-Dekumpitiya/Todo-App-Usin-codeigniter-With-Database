@@ -15,7 +15,7 @@ class ToDoModel extends Model
 
     protected $validationRules = [
         'todoname' => 'required|min_length[3]',
-        'description' => 'min_length[3]',
+        'description' => 'permit_empty|min_length[3]',
     ];
 
     protected $validationMessages = [

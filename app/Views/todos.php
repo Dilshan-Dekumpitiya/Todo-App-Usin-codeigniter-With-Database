@@ -19,6 +19,8 @@
         </header>
         <div class="container">
             <?php $flashMessage = session() -> getFlashdata('successMessage');
+            $errors = session()->get('errorsMessages');
+            session() -> remove('errorsMessages');
             if(strlen($flashMessage) >0 ) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             
@@ -29,8 +31,10 @@
 
             <form class="row" method="POST" action="<?php echo base_url('home/store/' . @$dataEdit['id'] ); ?>">
                 <div class="col-10">
-                    <input name="todoname" class="form-control mb-2" value="<?php echo @$dataEdit['todoname'] ?>" type="text" placeholder="Todo Name">
-                    <textarea name="description" class="form-control mb-2" placeholder="Todo Description"><?php echo @$dataEdit['description'] ?></textarea>
+                    <input name="todoname" class="form-control mb-2 <?php echo !@is_null($errors['todoname']) ? 'is-invalid' : '' ?>" value="<?php echo @$dataEdit['todoname'] ?>" type="text" placeholder="Todo Name">
+                    <div class="invalid-feedback"><?php echo @$errors['todoname']; ?></div>
+                    <textarea name="description" class="form-control mb-2 <?php echo !@is_null($errors['description']) ? 'is-invalid' : '' ?>" placeholder="Todo Description"><?php echo @$dataEdit['description'] ?></textarea>
+                    <div class="invalid-feedback"><?php echo @$errors['description']; ?></div>
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-outline-primary">
@@ -40,7 +44,7 @@
                             echo "Add Todo";
                         }
                         ?>
-                        Add To Do
+                        <!-- Add To Do -->
                     </button>
                 </div>
             </form>
